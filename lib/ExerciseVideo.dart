@@ -3,12 +3,16 @@ import 'package:video_player/video_player.dart';
 
 class ExerciseVideo extends StatefulWidget {
   final String videoUrl;
-  final String text;
   final String title;
   final String description;
 
-  ExerciseVideo({required this.videoUrl , required this.text , required this.description , required this.title});
+  ExerciseVideo({required this.videoUrl ,  required this.description , required this.title});
+  ExerciseVideo.fromJson Map<dynamic,dynamic> exersportifs{
+    "videoUrl"=data['videoUrl'];
+    "title" = data['title'];
+    "description" =data['description'];
 
+  }
   @override
   _ExerciseVideoState createState() => _ExerciseVideoState();
 }
