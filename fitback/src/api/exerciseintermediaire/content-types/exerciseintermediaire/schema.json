@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exerciseintermediaires",
+  "info": {
+    "singularName": "exerciseintermediaire",
+    "pluralName": "exerciseintermediaires",
+    "displayName": "exerciseintermediaire"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videoUrl": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

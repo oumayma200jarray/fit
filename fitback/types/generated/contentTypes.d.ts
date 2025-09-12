@@ -410,13 +410,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiExersportifsExersportifs
+export interface ApiExerciseavanceeExerciseavancee
   extends Struct.CollectionTypeSchema {
-  collectionName: 'exersportif';
+  collectionName: 'exerciseavancees';
   info: {
-    displayName: 'exersportifs';
-    pluralName: 'exersportif';
-    singularName: 'exersportifs';
+    displayName: 'exerciseavancee';
+    pluralName: 'exerciseavancees';
+    singularName: 'exerciseavancee';
   };
   options: {
     draftAndPublish: true;
@@ -429,12 +429,11 @@ export interface ApiExersportifsExersportifs
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::exersportifs.exersportifs'
+      'api::exerciseavancee.exerciseavancee'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    text: Schema.Attribute.String;
-    title: Schema.Attribute.Text;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -442,6 +441,75 @@ export interface ApiExersportifsExersportifs
       'images' | 'files' | 'videos' | 'audios',
       true
     >;
+  };
+}
+
+export interface ApiExercisedebutantExercisedebutant
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'exercisedebutants';
+  info: {
+    displayName: 'exercisedebutant';
+    pluralName: 'exercisedebutants';
+    singularName: 'exercisedebutant';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::exercisedebutant.exercisedebutant'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    videoUrl: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+  };
+}
+
+export interface ApiExerciseintermediaireExerciseintermediaire
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'exerciseintermediaires';
+  info: {
+    displayName: 'exerciseintermediaire';
+    pluralName: 'exerciseintermediaires';
+    singularName: 'exerciseintermediaire';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::exerciseintermediaire.exerciseintermediaire'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    videoUrl: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -955,7 +1023,9 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::exersportifs.exersportifs': ApiExersportifsExersportifs;
+      'api::exerciseavancee.exerciseavancee': ApiExerciseavanceeExerciseavancee;
+      'api::exercisedebutant.exercisedebutant': ApiExercisedebutantExercisedebutant;
+      'api::exerciseintermediaire.exerciseintermediaire': ApiExerciseintermediaireExerciseintermediaire;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

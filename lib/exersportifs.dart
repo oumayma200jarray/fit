@@ -6,7 +6,10 @@ class Exersportifs extends StatefulWidget{
   @override
   State <Exersportifs>createState() => _ExersportifsState();}
   class _ExersportifsState extends State <Exersportifs>{
-      List <ExerciseVideo> Exercices=[];
+      List <ExerciseVideo> Exercicesdebutants=[];
+      List <ExerciseVideo> Exercicesintermediaires=[];
+      List <ExerciseVideo> Exercicesavancees=[];
+
 
     @override
     Widget build (BuildContext context){
@@ -33,12 +36,26 @@ class Exersportifs extends StatefulWidget{
       Text('⚽ Football', style: TextStyle(fontSize: 16)),
       SizedBox(height: 10),
       Text('exemples des exercices ',style: TextStyle(fontWeight: FontWeight.bold,color: const Color.fromARGB(255, 162, 9, 88) )),
+      Text('debutant', style: TextStyle(fontSize: 15 , color: const Color.fromARGB(255, 14, 118, 147),fontStyle: FontStyle.italic,),),
       SingleChildScrollView(
         scrollDirection: Axis.horizontal, 
         child: 
-      ListView.builder(itemCount: Exercices.length ,
-      itemBuilder: (context, index) => Exercices[index] ) ),
-
+      ListView.builder(itemCount: Exercicesdebutants.length ,
+      itemBuilder: (context, index) => Exercicesdebutants[index] ) ),
+      SizedBox(height: 30,),
+       Text('intermediaire', style: TextStyle(fontSize: 15 , color: const Color.fromARGB(255, 34, 163, 60), fontStyle: FontStyle.italic,)),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal, 
+        child: 
+      ListView.builder(itemCount: Exercicesintermediaires.length ,
+      itemBuilder: (context, index) => Exercicesintermediaires[index] ) ),
+      SizedBox(height: 30,),
+       Text('avancé', style: TextStyle(fontSize: 15 , color: const Color.fromARGB(255, 147, 100, 14),fontStyle: FontStyle.italic,),),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal, 
+        child: 
+      ListView.builder(itemCount: Exercicesavancees.length ,
+      itemBuilder: (context, index) => Exercicesavancees[index] ) ),
     ],))
               ]),
             ) );

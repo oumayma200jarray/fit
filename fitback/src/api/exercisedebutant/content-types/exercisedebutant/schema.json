@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "exersportif",
+  "collectionName": "exercisedebutants",
   "info": {
-    "singularName": "exersportifs",
-    "pluralName": "exersportif",
-    "displayName": "exersportifs"
+    "singularName": "exercisedebutant",
+    "pluralName": "exercisedebutants",
+    "displayName": "exercisedebutant"
   },
   "options": {
     "draftAndPublish": true
@@ -21,11 +21,8 @@
         "audios"
       ]
     },
-    "text": {
-      "type": "string"
-    },
     "title": {
-      "type": "text"
+      "type": "string"
     },
     "description": {
       "type": "text"

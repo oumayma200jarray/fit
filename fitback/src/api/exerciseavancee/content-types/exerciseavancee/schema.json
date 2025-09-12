@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exerciseavancees",
+  "info": {
+    "singularName": "exerciseavancee",
+    "pluralName": "exerciseavancees",
+    "displayName": "exerciseavancee"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "videoUrl": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

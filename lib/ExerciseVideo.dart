@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-class ExerciseVideo extends StatefulWidget {
+abstract class ExerciseVideo extends StatefulWidget {
   final String videoUrl;
   final String title;
   final String description;
-
-  ExerciseVideo({required this.videoUrl ,  required this.description , required this.title});
-  ExerciseVideo.fromJson Map<dynamic,dynamic> exersportifs{
-    "videoUrl"=data['videoUrl'];
-    "title" = data['title'];
-    "description" =data['description'];
-
+  ExerciseVideo({required this.videoUrl, required this.title, required this.description});
+  
+  ExerciseVideo.fromJson(Map<String, dynamic> data) 
+      : videoUrl = data['videoUrl'],
+        title = data['title'],
+        description = data['description'];
+        
+         
   }
   @override
   _ExerciseVideoState createState() => _ExerciseVideoState();
-}
+
 
 class _ExerciseVideoState extends State<ExerciseVideo> {
   late VideoPlayerController _controller; // controleur video gére lecture,pause,arrét
@@ -54,7 +55,6 @@ class _ExerciseVideoState extends State<ExerciseVideo> {
         : Center(child: CircularProgressIndicator(color: Colors.deepPurple)),
           ),
           SizedBox(height: 10),
-          Center(child: Text(widget.text, style: TextStyle(color: Colors.pink, fontSize: 20))),
           SizedBox(height: 10),
           Row(children: [
             Text(widget.title, style:
