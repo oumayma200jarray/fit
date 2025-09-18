@@ -1,22 +1,34 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-abstract class ExerciseVideo extends StatefulWidget {
+class ExerciseVideo extends StatefulWidget {
   final String videoUrl;
   final String title;
   final String description;
   ExerciseVideo({required this.videoUrl, required this.title, required this.description});
-  
-  ExerciseVideo.fromJson(Map<String, dynamic> data) 
-      : videoUrl = data['videoUrl'],
-        title = data['title'],
-        description = data['description'];
-        
-         
-  }
-  @override
-  _ExerciseVideoState createState() => _ExerciseVideoState();
 
+  // Transforme les éléments du dict en objet Dart
+  factory ExerciseVideo.fromJson(Map<String, dynamic> data) {
+  final attributes = data['attributes'] ?? data;
+
+  // Récupération des données media
+  final mediaData = attributes['videoUrl']?['data']?['attributes'];
+  final url = mediaData != null
+      ? "http://localhost:1337${mediaData['url']}"
+      : ""; // si pas de vidéo
+
+  return ExerciseVideo(
+    videoUrl: url,
+    title: attributes['title'] ?? "",
+    description: attributes['description'] ?? "",
+  );
+}
+
+  @override
+  State<ExerciseVideo> createState() => _ExerciseVideoState();
+}
 
 class _ExerciseVideoState extends State<ExerciseVideo> {
   late VideoPlayerController _controller; // controleur video gére lecture,pause,arrét
@@ -41,8 +53,7 @@ class _ExerciseVideoState extends State<ExerciseVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Container(
+    return Container(
           width: 200,
           height: 150,
           child: Column( children:[ 
@@ -55,14 +66,14 @@ class _ExerciseVideoState extends State<ExerciseVideo> {
         : Center(child: CircularProgressIndicator(color: Colors.deepPurple)),
           ),
           SizedBox(height: 10),
-          SizedBox(height: 10),
           Row(children: [
             Text(widget.title, style:
             TextStyle(color: Colors.purple,fontSize:18)),  
-            Text(widget.description, style:
-            TextStyle(color: Colors.black,fontSize:15)),
+            SizedBox(height: 10),
+            Expanded(child:Text(widget.description, overflow: TextOverflow.ellipsis, style:
+            TextStyle(color: Colors.black,fontSize:15))),
 
-          ])])));
+          ])]));
         
   }
 }

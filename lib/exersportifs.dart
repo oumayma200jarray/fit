@@ -1,5 +1,11 @@
+// ignore_for_file: non_constant_identifier_names
+
+//import 'dart:core' as Parse;
+import 'dart:core' show Future, List, dynamic, Uri, Exception, override, bool;
+
 import 'package:flutter/material.dart';
 import 'package:fit/ExerciseVideo.dart';
+import 'package:fit/ApiService.dart';
 
 class Exersportifs extends StatefulWidget{
   Exersportifs({super.key});
@@ -9,6 +15,32 @@ class Exersportifs extends StatefulWidget{
       List <ExerciseVideo> Exercicesdebutants=[];
       List <ExerciseVideo> Exercicesintermediaires=[];
       List <ExerciseVideo> Exercicesavancees=[];
+      bool isLoadingvideo = true ;
+
+  @override
+  void initState() {
+    super.initState();
+    loadexercise();
+  }
+ 
+ Future<void> loadexercise() async {
+  setState(() {
+    isLoadingvideo = true;
+  });
+
+  final api = Apiservice();
+
+  final debutants = await api.fetchDebutants();
+  final intermediaires = await api.fetchIntermediaires();
+  final avances = await api.fetchAvances();
+
+  setState(() {
+    Exercicesdebutants = debutants;
+    Exercicesintermediaires = intermediaires;
+    Exercicesavancees = avances;
+    isLoadingvideo = false;
+  });
+}
 
 
     @override

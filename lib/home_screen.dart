@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> {
   StreamSubscription<PedestrianStatus>? _pedestrianSubscription;
   Timer? _stepTimer;
-  String _status = "stopped";
+ String _status = "stopped";
   int _steps = 0;
   int _todaySteps = 0;
   bool _isWalking = false;
